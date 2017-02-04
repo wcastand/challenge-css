@@ -13,7 +13,7 @@ http.createServer((req, res) => {
   switch (req.url) {
     case '/': return assets.html(req, res).pipe(res)
     case '/bundle.js': return assets.js(req, res).pipe(res)
-    case '/bundle.css': return assets.css(req, res).pipe(res)
+    case '/bundle.css': return res.end(fs.readFileSync('./src/app.css', 'utf-8'))
     case '/three.min.js': return res.end(fs.readFileSync('./vendors/three.min.js', 'utf-8'))
     case '/tween.min.js': return res.end(fs.readFileSync('./vendors/tween.min.js', 'utf-8'))
     default: return (res.statusCode = 404 && res.end('404 not found'))
