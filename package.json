@@ -1,0 +1,19 @@
+{
+  "name": "gifs",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "repository": {},
+  "license": "MIT",
+  "scripts": {
+    "clean": "rm -rf dist && mkdir -p dist",
+    "copy": "cp vendors/* dist",
+    "build": "npm run clean && npm run copy && bankai build src/index.js dist -j [ -t babelify ] -H [ --head \"<script src='three.min.js'></script><script src='tween.min.js'></script>\" ]",
+    "deploy": "npm run build && now dist",
+    "dev": "node server.js"
+  },
+  "devDependencies": {
+    "babel-preset-latest": "^6.22.0",
+    "babelify": "^7.3.0",
+    "bankai": "^5.3.0"
+  }
+}
