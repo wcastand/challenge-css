@@ -6,8 +6,8 @@
   "license": "MIT",
   "scripts": {
     "clean": "rm -rf dist && mkdir -p dist",
-    "copy": "cp vendors/* dist",
-    "build": "npm run clean && npm run copy && bankai build src/index.js dist -j [ -t babelify ] -H [ --head \"<script src='three.min.js'></script><script src='tween.min.js'></script>\" ]",
+    "copy": "cp vendors/* dist && cp src/app.css dist/bundle.css",
+    "build": "npm run clean && bankai build src/index.js dist -j [ -t babelify ] -H [ --head \"<script src='three.min.js'></script><script src='tween.min.js'></script>\" ] && npm run copy",
     "deploy": "npm run build && now dist",
     "dev": "node server.js"
   },
